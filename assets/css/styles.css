@@ -1,0 +1,262 @@
+body {
+    font-family: "Raleway", sans-serif;
+    color: #fff;
+    font-size: 1rem;
+}
+
+nav,
+aside,
+footer {
+    background-color: #1f4690;
+}
+
+main {
+    background-color: #fff;
+    color: #000;
+    padding: 1rem;
+}
+
+
+/*  Grid areas */
+.main-grid-container {
+    display: grid;
+    min-height: 100vh;
+    grid-template-areas:
+        "navbar navbar navbar"
+        "sidebar cards cards"
+        "footer footer footer";
+
+    grid-template-columns: 1fr 3fr 3fr;
+    grid-template-rows: 5rem 1fr 4rem;
+}
+
+nav {
+    grid-area: navbar;
+}
+
+aside {
+    grid-area: sidebar;
+}
+
+main {
+    grid-area: cards;
+}
+
+footer {
+    grid-area: footer;
+}
+/* Grid Areas End */
+
+
+/* Navbar con Flexbox */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 3rem;
+    font-size: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 1rem;
+}
+
+ul.navbar-menu > li {
+    padding-inline: 1rem;
+    line-height: 4.5rem;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+}
+
+.navbar-menu li:hover {
+    background-color: #231955;
+}
+
+.navbar .brand {
+    width: 5rem;
+}
+
+nav.navbar > section > p {
+    color: #e8aa42;
+    font-size: 1.7rem;
+}
+
+/* Sección aside */
+aside {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    font-size: 1.1rem;
+    min-width: 8rem;
+}
+
+aside h2 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding-block: 1rem;
+    color: #fff;
+}
+
+aside > div {
+    padding: 0.5rem 1.5rem;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+}
+
+aside > div:hover:not(:first-child) {
+    background-color: #231955;
+}
+
+/* Sección Cards */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    gap: 1rem;
+    padding: 2rem;
+    justify-items: center;
+    background-color: #e8ebe4;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 23rem;
+    max-width: 20rem;
+    border: 2px solid #1f4690;
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: #fff;
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+
+    /*Animación de tarjeta*/
+    transition: transform 0.4s;
+    -webkit-transition: transform 0.4s;
+    -moz-transition: transform 0.4s;
+    -ms-transition: transform 0.4s;
+    -o-transition: transform 0.4s;
+}
+
+/*Animación de tarjeta*/
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
+}
+
+.card-image {
+    max-height: 15rem;
+    padding: 1rem;
+    flex-grow: 3;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+}
+
+.card-text > p {
+    padding-bottom: 0.5rem;
+}
+
+.card-text > p:last-child {
+    font-weight: bold;
+}
+
+.card > a {
+    display: flex;
+    justify-content: center;
+    background-color: #1f4690;
+    width: 100%;
+    color: #fff;
+    flex-grow: 2;
+}
+
+.card > a > p {
+    align-self: center;
+}
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Media Queries para 'navbar' y 'cards', pero no para el 'aside'. 
+No logré hacer un menú hamburguesa responsivo para eso. */
+
+@media (min-width: 1500px) {
+    .cards-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (max-width: 1250px) {
+    .cards-container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 1150px) {
+    .navbar {
+        flex-direction: column;
+        margin: 0;
+        justify-items: center;
+        align-items: center;
+        text-align: center;
+        font-size: 1.3rem;
+        height: fit-content;
+    }
+    nav.navbar > section > p {
+        font-size: 1.5rem;
+        padding-top: 1rem;
+    }
+    ul.navbar-menu > li {
+        line-height: 3.5rem;
+    }
+    .navbar > .brand {
+        display: none;
+    } 
+}
+
+@media (max-width: 1000px) {
+    .cards-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    aside {
+        padding-top: 2rem;
+    }
+    
+}
+
+@media (max-width: 700px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+}
